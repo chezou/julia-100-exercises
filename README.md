@@ -101,7 +101,7 @@ Z = repmat([0 1;1 0],4,4)
 ```jl
 Z = rand(5, 5)
 Zmin, Zmax = minimum(Z), maximum(Z)
-Z = (Z .- Zmin)/(Zmax - Zmin)
+Z = (Z .- Zmin)./(Zmax - Zmin)
 ```
 
 ## 5. Multiply a 5x3 matrix by a 3x2 matrix (real matrix product)
@@ -114,6 +114,9 @@ Z = ones(5,3) * ones(3,2)
 
 ```jl
 (zeros(10,10) .+ [0:9])'
+
+# Alternate solution
+[y for x in 1:10, y in 0:9]
 ```
 
 ## 7. Create a vector of size 1000 with values ranging from 0 to 1, both excluded
@@ -126,7 +129,8 @@ linspace(0,1, 1002)[2:end - 1]
 
 ```jl
 Z = rand(100)
-sort(Z)
+sort(Z) # returns a sorted copy of Z; leaves Z unchanged
+sort!(Z) # sorts Z in-place; returns Z
 ```
 
 ## 9. Consider two random matrices A anb B, check if they are equal.
