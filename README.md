@@ -349,6 +349,16 @@ A = foldl(vcat,[kron(ones(Int64, C[i]), i) for i in 1:length(C)])
 
 ## 4. How to compute averages using a sliding window over an array ?
 
+```jl
+function moving_average(A, n=3)
+  ret = cumsum(A)
+  ret[n+1:end] = ret[n+1:end] - ret[1:end-n]
+  return ret[n:end-1] / n
+end
+Z = 0:20
+moving_average(Z, 3)
+```
+
 # Artisan
 ## 1. Considering a 100x3 matrix, extract rows with unequal values (e.g. [2,2,3])
 
