@@ -3,7 +3,7 @@
 
 This is Julia version of [100 numpy exercises](http://www.loria.fr/~rougier/teaching/numpy.100/)
 
-Latest virsion of 100 numpy excercises are available at [this repository](https://github.com/rougier/numpy-100).
+Latest version of 100 numpy excercises are available at [this repository](https://github.com/rougier/numpy-100).
 
 You can see executed results [here](http://nbviewer.ipython.org/github/chezou/julia-100-exercises/blob/master/julia-100-exercises.ipynb)
 
@@ -178,7 +178,7 @@ X = linspace(0,1,10)
 Zx, Zy = meshgrid(X, X)
 ```
 
-## 5. Print the minimum and maximum representable value for each numpy scalar type
+## 5. Print the minimum and maximum representable value for each Julia scalar type
 
 ```jl
 for dtype in (Int8, Int16, Int32, Int64)
