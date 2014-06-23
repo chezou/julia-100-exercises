@@ -75,9 +75,14 @@ rand(10, 10, 10)
 ## 1. Create a 8x8 matrix and fill it with a checkerboard pattern
 
 ```jl
-Z = zeros(8,8)
+Z = zeros(Int64,8,8)
 Z[1:2:end, 2:2:end] = 1
 Z[2:2:end, 1:2:end] = 1
+Z
+
+# Another solution
+# Author: harven
+[(i+j)%2 for i=1:8, j=1:8]
 ```
 
 ## 2. Create a 10x10 array with random values and find the minimum and maximum values
@@ -113,7 +118,7 @@ Z = ones(5,3) * ones(3,2)
 ## 6. Create a 10x10 matrix with row values ranging from 0 to 9
 
 ```jl
-(zeros(10,10) .+ [0:9])'
+(zeros(Int64,10,10) .+ [0:9])'
 
 # Alternate solution
 # Author: Leah Hanson
@@ -185,6 +190,10 @@ Z[indmax(Z)] = 0
 include("/Applications/Julia-0.3.0-prerelease-547facf2c1.app/Contents/Resources/julia/share/julia/examples/ndgrid.jl")
 X = linspace(0,1,10)
 Zx, Zy = meshgrid(X, X)
+
+# Another solution
+# Author: Alireza Nejati
+[(x,y) for x in linspace(0,1,10), y in linspace(0,1,10)]
 ```
 
 ## 5. Print the minimum and maximum representable value for each Julia scalar type
@@ -194,6 +203,10 @@ for dtype in (Int8, Int16, Int32, Int64)
     println(typemin(dtype))
     println(typemax(dtype))
 end
+
+# Another solution
+# Author: harven
+print(map!(t -> (typemin(t),typemax(t)), subtypes(Signed)))
 ```
 
 # typemin, typemax returns -Inf, Inf
@@ -230,6 +243,21 @@ X, Y = meshgrid(linspace(-1,1,100),linspace(-1,1,100))
 D = sqrtm(X*X + Y*Y)
 sigma, mu = 1.0, 0.0
 G = exp(-( (D.-mu)^2 / ( 2.0 * sigma^2 ) ) )
+
+# Another solution
+# Author: Billou Beilour
+sigma, mu = 1.0, 0.0
+G = [ exp(-(x-mu).^2/(2.0*sigma^2) -(y-mu).^2/(2.0*sigma^2) ) for x in linspace(-1,1,100), y in linspace(-1,1,100) ]
+
+# It also written
+# Author: Billou Beilour
+sigma, mu = 1.0, 0.0
+x,y = linspace(-1,1,100), linspace(-1,1,100)
+G = zeros(length(x),length(y))
+
+for i in 1:length(x), j in 1:length(y)
+    G[i,j] = exp(-(x[i]-mu).^2/(2.0*sigma^2) -(y[j]-mu).^2/(2.0*sigma^2) )
+end
 ```
 
 ## 9. Consider the vector [1, 2, 3, 4, 5], how to build a new vector with 3 consecutive zeros interleaved between each value ?
