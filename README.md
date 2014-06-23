@@ -116,6 +116,7 @@ Z = ones(5,3) * ones(3,2)
 (zeros(10,10) .+ [0:9])'
 
 # Alternate solution
+# Author: Leah Hanson
 [y for x in 1:10, y in 0:9]
 ```
 
@@ -130,6 +131,10 @@ linspace(0,1, 1002)[2:end - 1]
 ```jl
 Z = rand(100)
 sort(Z) # returns a sorted copy of Z; leaves Z unchanged
+
+# Alternate solution
+# Author: Leah Hanson
+Z = rand(100)
 sort!(Z) # sorts Z in-place; returns Z
 ```
 
