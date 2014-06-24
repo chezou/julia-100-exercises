@@ -90,9 +90,10 @@ Z
 ```jl
 Z = rand(10, 10)
 Zmin, Zmax = minimum(Z), maximum(Z)
-```
-# It can also be written as follows. (Thanks [hc_e](http://qiita.com/chezou/items/d7ca4e95d25835a5cd01#comment-1c20073a44695c08f523))
-```jl
+
+# It can also be written as follows.
+# Author: hc_e
+# http://qiita.com/chezou/items/d7ca4e95d25835a5cd01#comment-1c20073a44695c08f523
 Zmin, Zmax = extrema(Z)
 ```
 
@@ -208,12 +209,9 @@ end
 
 # Another solution
 # Author: harven
-print(map!(t -> (typemin(t),typemax(t)), subtypes(Signed)))
-```
-
 # typemin, typemax returns -Inf, Inf
+print(map!(t -> (typemin(t),typemax(t)), subtypes(Signed)))
 
-```jl
 for dtype in (Float32, Float64)
     println(typemin(dtype))
     println(typemax(dtype))
