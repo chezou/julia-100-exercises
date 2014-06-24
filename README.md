@@ -15,7 +15,7 @@ You can see executed results [here](http://nbviewer.ipython.org/github/chezou/ju
 # nothing to do
 ```
 
-## 2. Print the julia version
+## 2. Print the Julia version
 
 ```jl
 VERSION
@@ -27,7 +27,7 @@ VERSION
 Z = zeros(10)
 ```
 
-## 4. Create a null vector of size 10 but the fifth value which is 1
+## 4. Create a null vector of size 10 and set the fifth value to 1
 
 ```jl
 Z = zeros(10)
@@ -90,7 +90,9 @@ Z
 ```jl
 Z = rand(10, 10)
 Zmin, Zmax = minimum(Z), maximum(Z)
-# It also write as following. thanks [hc_e](http://qiita.com/chezou/items/d7ca4e95d25835a5cd01#comment-1c20073a44695c08f523)
+```
+# It can also be written as follows. (Thanks [hc_e](http://qiita.com/chezou/items/d7ca4e95d25835a5cd01#comment-1c20073a44695c08f523))
+```jl
 Zmin, Zmax = extrema(Z)
 ```
 
@@ -165,7 +167,7 @@ m = mean(Z)
 # I can't solve it
 ```
 
-## 2. Consider a random 100x2 matrix representing cartesian coordinates, convert them to polar coordinates
+## 2. Consider a random 100x2 matrix representing Cartesian coordinates, convert them to polar coordinates
 
 ```jl
 Z = rand(100,2)
@@ -184,8 +186,8 @@ Z[indmax(Z)] = 0
 ## 4. Create a structured array with x and y coordinates covering the [0,1]x[0,1] area.
 
 ```jl
-# There is not exist `meshgrid` officially
-# see also. https://github.com/JuliaLang/julia/issues/4093
+# There is no official `meshgrid` function.
+# See also: https://github.com/JuliaLang/julia/issues/4093
 # assume using https://github.com/JuliaLang/julia/blob/master/examples/ndgrid.jl
 include("/Applications/Julia-0.3.0-prerelease-547facf2c1.app/Contents/Resources/julia/share/julia/examples/ndgrid.jl")
 X = linspace(0,1,10)
@@ -260,7 +262,7 @@ for i in 1:length(x), j in 1:length(y)
 end
 ```
 
-## 9. Consider the vector [1, 2, 3, 4, 5], how to build a new vector with 3 consecutive zeros interleaved between each value ?
+## 9. Consider the vector [1, 2, 3, 4, 5]. How to build a new vector with 3 consecutive zeros interleaved between each value?
 
 ```jl
 Z = [1,2,3,4,5]
@@ -276,7 +278,7 @@ Z = [3,6,9,12,15]
 Z[indmin(abs(Z .- 10))]
 ```
 
-# Journyman
+# Journeyman
 ## 1. Consider the following file:
 
 ```
@@ -285,7 +287,7 @@ Z[indmin(abs(Z .- 10))]
 ,,9,10,11
 ```
 
-## How to read it ?
+## How to read it?
 
 ```jl
 using DataFrames
@@ -299,7 +301,7 @@ readtable("missing.dat")
 # I can't translate this question
 ```
 
-## 3. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices) ?
+## 3. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)?
 
 ```jl
 using StatsBase
@@ -308,7 +310,7 @@ I = rand(0:length(Z), 20)
 Z += counts(I, 1:length(Z))
 ```
 
-## 4. How to accumulate elements of a vector (X) to an array (F) based on an index list (I) ?
+## 4. How to accumulate elements of a vector (X) to an array (F) based on an index list (I)?
 
 ```jl
 using StatsBase
@@ -327,7 +329,7 @@ n = length(unique(F))
 unique(I)
 ```
 
-## 6. Considering a four dimensions array, how to get sum over the last two axis at once ?
+## 6. Considering a four dimensional array, how to get sum over the last two axis at once?
 
 ```jl
 A = rand(0:10, (3,4,3,4))
@@ -336,7 +338,7 @@ z = prod(size(A)[end-1:end])
 calc_sum = sum(reshape(A, (x,y,z)),3)
 ```
 
-## 7. Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset indices ?
+## 7. Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset indices?
 
 ```jl
 using StatsBase
@@ -375,7 +377,7 @@ F = sort(F,2)
 G = unique(F,1)
 ```
 
-## 3. Given an array C that is a bincount, how to produce an array A such that np.bincount(A) == C ?
+## 3. Given an array C that is a bincount, how to produce an array A such that np.bincount(A) == C?
 
 ```jl
 using StatsBase
@@ -384,7 +386,7 @@ C = counts(O, maximum(O))
 A = foldl(vcat,[kron(ones(Int64, C[i]), i) for i in 1:length(C)])
 ```
 
-## 4. How to compute averages using a sliding window over an array ?
+## 4. How to compute averages using a sliding window over an array?
 
 ```jl
 function moving_average(A, n=3)
@@ -413,14 +415,14 @@ B = foldl(hcat,[reverse(int(bool(i & (2 .^ (0:8))))) for i in I])'
 ```
 
 # Adept
-## 1. Consider an arbitrary array, write a function that extract a subpart with a fixed shape and centered on a given element (pad with a fill value when necessary)
+## 1. Consider an arbitrary array, write a function that extracts a subpart with a fixed shape and centered on a given element (pad with a fill value when necessary)
 
 ```jl
 # Not solve yet
 ```
 
 # Expert
-## 1. Consider two arrays A and B of shape (8,3) and (2,2). How to find rows of A that contain elements of each row of B regardless of the order of the elements in B ?
+## 1. Consider two arrays A and B of shape (8,3) and (2,2). How to find rows of A that contain elements of each row of B regardless of the order of the elements in B?
 
 ```jl
 # I can't execute numpy version...
@@ -441,7 +443,7 @@ B = foldl(hcat,[reverse(int(bool(i & (2 .^ (0:8))))) for i in I])'
 # See also: https://github.com/JuliaLang/julia/pull/1533
 ```
 
-## 4. Consider a set of p matrices wich shape (n,n) and a set of p vectors with shape (n,1). How to compute the sum of of the p matrix products at once ? (result has shape (n,1))
+## 4. Consider a set of p matrices with shape (n,n) and a set of p vectors with shape (n,1). How to compute the sum of the p matrix products at once? (result has shape (n,1))
 
 
 ```jl
@@ -449,7 +451,7 @@ B = foldl(hcat,[reverse(int(bool(i & (2 .^ (0:8))))) for i in I])'
 ```
 
 # Master
-## 1. Given a two dimensional array, how to extract unique rows ?
+## 1. Given a two dimensional array, how to extract unique rows?
 
 ```jl
 Z = rand(0:2, 6,3)
