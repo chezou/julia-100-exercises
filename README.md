@@ -432,7 +432,7 @@ B = foldl(hcat,[reverse(int(bool(i & (2 .^ (0:8))))) for i in I])'
 # Not solve yet
 ```
 
-## 3. Extract all the contiguous 3x3 blocks from a random 10x10 matrix.
+## 3. Create a 2D array subclass such that Z[i,j] == Z[j,i].
 
 
 ```jl
@@ -445,7 +445,10 @@ B = foldl(hcat,[reverse(int(bool(i & (2 .^ (0:8))))) for i in I])'
 
 
 ```jl
-# Not solve yet
+p, n = 5, 10
+m = [rand(n, n) for _ in 1:p];
+v = [rand(n) for _ in 1:p];
+sum(m .* v)
 ```
 
 # Master
