@@ -444,7 +444,12 @@ B = foldl(hcat,[reverse(int(bool(i & (2 .^ (0:8))))) for i in I])'
 
 
 ```jl
-# Not solve yet
+# Author: Alireza Nejati
+p, n = 10, 20
+M = ones(n,n,p)
+V = ones(n,p)
+S = reduce(+, [M[i,:,j]*V[i] for i = 1:n, j = 1:p])'
+S
 ```
 
 # Master
