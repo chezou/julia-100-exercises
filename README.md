@@ -168,12 +168,12 @@ m = mean(Z)
 # I can't solve it
 ```
 
-## 2. Consider a random 100x2 matrix representing Cartesian coordinates, convert them to polar coordinates
+## 2. Consider a random 10x2 matrix representing Cartesian coordinates, convert them to polar coordinates
 
 ```jl
-Z = rand(100,2)
+Z = rand(10,2)
 X, Y = Z[:,1], Z[:,2]
-R = sqrt(X'*X + Y'*Y)
+R = sqrt(X.^2 + Y.^2)
 T = atan2(Y,X)
 ```
 
@@ -233,7 +233,7 @@ end
 ```jl
 Z = rand(10,2)
 X,Y = Z[:,1], Z[:,2]
-D = sqrtm((X.-X.')^2 + (Y .- Y.')^2)
+D = sqrt((X.-X').^2 + (Y .- Y').^2)
 ```
 
 ## 8. Generate a generic 2D Gaussian-like array
