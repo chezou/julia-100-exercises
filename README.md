@@ -1,6 +1,8 @@
 100 Julia exercises
 =============
 
+writing on iOS
+
 This is Julia version of [100 numpy exercises](http://www.loria.fr/~rougier/teaching/numpy.100/)
 
 Latest version of 100 numpy excercises are available at [this repository](https://github.com/rougier/numpy-100).
@@ -451,6 +453,8 @@ V = ones(n,p)
 S = reduce(+, [M[i,:,j]*V[i] for i = 1:n, j = 1:p])'
 S
 ```
+
+test to write
 
 # Master
 ## 1. Given a two dimensional array, how to extract unique rows?
