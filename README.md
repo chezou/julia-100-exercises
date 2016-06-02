@@ -165,7 +165,15 @@ m = mean(Z)
 ## 1. Make an array immutable (read-only)
 
 ```jl
-# I can't solve it
+julia> Pkg.add("ImmutableArrays")
+julia> using ImmutableArrays
+julia> Matrix4x4(rand(4,4))
+4x4 ImmutableArrays.Matrix4x4{Float64}:
+ 0.0724154  0.0840244  0.291123  0.853076
+ 0.0994344  0.686174   0.214841  0.248117
+ 0.996963   0.680124   0.405399  0.180246
+ 0.232086   0.0424678  0.375087  0.799278
+
 ```
 
 ## 2. Consider a random 10x2 matrix representing Cartesian coordinates, convert them to polar coordinates
