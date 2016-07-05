@@ -304,7 +304,12 @@ readtable("missing.dat")
 
 
 ```jl
-# I can't translate this question
+function mygenerator()
+    for n=1:10
+        produce(n)
+    end
+end
+collect(Int,Task(mygenerator))
 ```
 
 ## 3. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)?
